@@ -1,6 +1,6 @@
-# 🛡️ CiviSafe: Privacy-Respecting Anonymous Complaint & Support System
+# 🛡️ CiviSafe - Privacy-Respecting Anonymous Complaint & Support System
 
-> **Empowering communities through secure, anonymous reporting and support systems**
+A modern, secure, and user-friendly platform for anonymous complaint submission and support management with MongoDB integration.
 
 ## 📋 Project Overview
 
@@ -352,3 +352,262 @@ For support and questions:
 **CiviSafe** - Empowering communities through secure, anonymous reporting and support systems.
 
 *Built with ❤️ for social impact and digital rights.* 
+
+## ✨ Features
+
+### 🔐 **User Authentication & Registration**
+- **Secure User Registration** with MongoDB storage
+- **JWT-based Authentication** with role-based access
+- **Multiple User Roles**: admin, ngo, police, user, student, faculty, staff
+- **Password Hashing** with bcrypt
+- **Email Validation** and duplicate prevention
+- **User Profiles** with firstName, lastName, phone
+
+### 📝 **Complaint Management**
+- **Anonymous Complaint Submission** with file uploads
+- **Individual User Dashboards** - users see only their own complaints
+- **Real-time Tracking** with unique tracking tokens
+- **Status Updates** and progress tracking
+- **File Attachments** support (images, PDFs, documents)
+
+### 🎨 **Modern UI/UX**
+- **Responsive Design** with Tailwind CSS
+- **Smooth Animations** using Framer Motion
+- **Dark/Light Mode** toggle
+- **Interactive Components** with hover effects
+- **Mobile-First** approach
+
+### 🔒 **Security Features**
+- **End-to-End Encryption** for sensitive data
+- **Anonymous Reporting** with privacy protection
+- **Secure File Uploads** with validation
+- **JWT Token Management**
+- **Role-Based Access Control**
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v14 or higher)
+- MongoDB (local or Atlas)
+
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd CIVI-SAFE
+```
+
+### 2. Setup MongoDB
+```bash
+# Run the interactive setup script
+npm run setup
+
+# Or manually create a .env file with your MongoDB connection
+```
+
+### 3. Install Dependencies
+```bash
+npm install
+cd frontend && npm install
+```
+
+### 4. Start the Application
+```bash
+# Terminal 1: Start backend server
+npm run dev
+
+# Terminal 2: Start frontend (in frontend directory)
+cd frontend && npm start
+```
+
+### 5. Access the Application
+- **Frontend**: http://localhost:3005
+- **Backend API**: http://localhost:3001
+
+## 📊 MongoDB Integration
+
+### Database Setup
+The application uses MongoDB for storing users and complaints. You can choose between:
+
+1. **MongoDB Atlas (Recommended)** - Cloud database
+2. **Local MongoDB** - Self-hosted database
+
+### Automatic Setup
+Run the setup script for guided MongoDB configuration:
+```bash
+npm run setup
+```
+
+### Manual Setup
+Create a `.env` file in the root directory:
+```env
+# MongoDB Configuration
+MONGODB_URI=mongodb://localhost:27017/civisafe
+# OR for Atlas: MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/civisafe
+
+# Server Configuration
+PORT=3001
+NODE_ENV=development
+
+# JWT Configuration
+JWT_SECRET=your-secret-key
+
+# File Upload Configuration
+MAX_FILE_SIZE=10485760
+UPLOAD_PATH=./uploads
+```
+
+## 👥 User Management
+
+### Default Test Users
+The system automatically creates these test accounts:
+
+| Username | Password | Role |
+|----------|----------|------|
+| admin | admin123 | Admin |
+| ngo1 | ngo123 | NGO |
+| police | police123 | Police |
+| john_doe | password123 | User |
+| jane_smith | password123 | Student |
+| mike_wilson | password123 | Faculty |
+
+### User Registration
+Users can register with:
+- **Username** (3-30 characters)
+- **Email** (validated format)
+- **Password** (minimum 6 characters)
+- **First Name** & **Last Name** (optional)
+- **Phone Number** (optional)
+- **Account Type** (user, student, faculty, staff)
+
+## 🔧 API Endpoints
+
+### Authentication
+- `POST /api/register` - User registration
+- `POST /api/login` - User login
+- `POST /api/verify-token` - Token verification
+
+### Complaints
+- `POST /api/complaints` - Submit complaint (authenticated)
+- `GET /api/complaints` - Get user's complaints (authenticated)
+- `GET /api/complaints/track/:token` - Track complaint by token
+- `PUT /api/complaints/:id/status` - Update complaint status (admin)
+
+### Admin
+- `GET /api/stats` - Get complaint statistics (admin)
+
+## 🎯 Key Features
+
+### ✅ **User Registration & Authentication**
+- Secure MongoDB-based user storage
+- Password hashing with bcrypt
+- JWT token authentication
+- Role-based access control
+
+### ✅ **Individual Complaint Storage**
+- Each user sees only their own complaints
+- Secure user-specific dashboards
+- Privacy-protected complaint management
+
+### ✅ **"Code Copied" Notifications**
+- Visual feedback when copying tracking tokens
+- Animated copy confirmation
+- User-friendly interaction feedback
+
+### ✅ **Enhanced User Experience**
+- Beautiful registration form with additional fields
+- Real-time validation and error handling
+- Smooth animations and transitions
+- Mobile-responsive design
+
+## 🛠️ Technology Stack
+
+### Backend
+- **Node.js** with Express.js
+- **MongoDB** with Mongoose ODM
+- **JWT** for authentication
+- **bcrypt** for password hashing
+- **Multer** for file uploads
+
+### Frontend
+- **React.js** with hooks
+- **Tailwind CSS** for styling
+- **Framer Motion** for animations
+- **React Router** for navigation
+- **Axios** for API calls
+
+### Database
+- **MongoDB** (local or Atlas)
+- **Mongoose** for data modeling
+- **Indexes** for performance optimization
+
+## 📁 Project Structure
+
+```
+CIVI-SAFE/
+├── frontend/                 # React frontend
+│   ├── src/
+│   │   ├── components/      # Reusable components
+│   │   ├── pages/          # Page components
+│   │   ├── context/        # React context providers
+│   │   └── index.js        # App entry point
+│   └── package.json
+├── models/                  # MongoDB models
+│   ├── User.js             # User model
+│   └── Complaint.js        # Complaint model
+├── config/                  # Configuration files
+│   └── database.js         # MongoDB connection
+├── server.js               # Main server file
+├── setup-mongodb.js        # MongoDB setup script
+└── package.json
+```
+
+## 🔒 Security Features
+
+- **Password Hashing**: All passwords are hashed using bcrypt
+- **JWT Tokens**: Secure session management
+- **Input Validation**: Server-side validation for all inputs
+- **File Upload Security**: Restricted file types and sizes
+- **CORS Protection**: Cross-origin request protection
+- **Environment Variables**: Secure configuration management
+
+## 🚀 Deployment
+
+### Local Development
+```bash
+npm run dev
+```
+
+### Production
+```bash
+npm start
+```
+
+### Environment Variables
+Make sure to set up your `.env` file with:
+- MongoDB connection string
+- JWT secret key
+- Server port
+- File upload settings
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+For support and questions:
+- Check the documentation
+- Review the MongoDB setup guide
+- Open an issue on GitHub
+
+---
+
+**CiviSafe** - Empowering communities through secure, anonymous reporting and support systems. 🛡️ 

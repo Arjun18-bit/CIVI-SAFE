@@ -13,6 +13,9 @@ import Chat from './pages/Chat/Chat';
 import Resources from './pages/Resources/Resources';
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminDashboard from './pages/Admin/AdminDashboard';
+import UserLogin from './pages/UserLogin/UserLogin';
+import UserRegister from './pages/UserRegister/UserRegister';
+import UserDashboard from './pages/UserDashboard/UserDashboard';
 import NotFound from './pages/NotFound/NotFound';
 
 // Context
@@ -112,6 +115,20 @@ function App() {
                       } 
                     />
                     <Route 
+                      path="/chat" 
+                      element={
+                        <motion.div
+                          initial="initial"
+                          animate="in"
+                          exit="out"
+                          variants={pageVariants}
+                          transition={pageTransition}
+                        >
+                          <Chat />
+                        </motion.div>
+                      } 
+                    />
+                    <Route 
                       path="/chat/:token" 
                       element={
                         <motion.div
@@ -140,6 +157,20 @@ function App() {
                       } 
                     />
                     <Route 
+                      path="/admin" 
+                      element={
+                        <motion.div
+                          initial="initial"
+                          animate="in"
+                          exit="out"
+                          variants={pageVariants}
+                          transition={pageTransition}
+                        >
+                          <AdminLogin />
+                        </motion.div>
+                      } 
+                    />
+                    <Route 
                       path="/admin/login" 
                       element={
                         <motion.div
@@ -164,6 +195,90 @@ function App() {
                           transition={pageTransition}
                         >
                           <AdminDashboard />
+                        </motion.div>
+                      } 
+                    />
+                    <Route 
+                      path="/login" 
+                      element={
+                        <motion.div
+                          initial="initial"
+                          animate="in"
+                          exit="out"
+                          variants={pageVariants}
+                          transition={pageTransition}
+                        >
+                          <UserLogin />
+                        </motion.div>
+                      } 
+                    />
+                    <Route 
+                      path="/register" 
+                      element={
+                        <motion.div
+                          initial="initial"
+                          animate="in"
+                          exit="out"
+                          variants={pageVariants}
+                          transition={pageTransition}
+                        >
+                          <UserRegister />
+                        </motion.div>
+                      } 
+                    />
+                    <Route 
+                      path="/dashboard" 
+                      element={
+                        <motion.div
+                          initial="initial"
+                          animate="in"
+                          exit="out"
+                          variants={pageVariants}
+                          transition={pageTransition}
+                        >
+                          <UserDashboard />
+                        </motion.div>
+                      } 
+                    />
+                    <Route 
+                      path="/user/login" 
+                      element={
+                        <motion.div
+                          initial="initial"
+                          animate="in"
+                          exit="out"
+                          variants={pageVariants}
+                          transition={pageTransition}
+                        >
+                          <UserLogin />
+                        </motion.div>
+                      } 
+                    />
+                    <Route 
+                      path="/user/register" 
+                      element={
+                        <motion.div
+                          initial="initial"
+                          animate="in"
+                          exit="out"
+                          variants={pageVariants}
+                          transition={pageTransition}
+                        >
+                          <UserRegister />
+                        </motion.div>
+                      } 
+                    />
+                    <Route 
+                      path="/user/dashboard" 
+                      element={
+                        <motion.div
+                          initial="initial"
+                          animate="in"
+                          exit="out"
+                          variants={pageVariants}
+                          transition={pageTransition}
+                        >
+                          <UserDashboard />
                         </motion.div>
                       } 
                     />
