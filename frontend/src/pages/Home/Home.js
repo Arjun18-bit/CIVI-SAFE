@@ -23,7 +23,6 @@ import {
   Cpu,
   Wifi,
   Smartphone,
-  Monitor,
   Tablet
 } from 'lucide-react';
 

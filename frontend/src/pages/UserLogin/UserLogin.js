@@ -20,6 +20,7 @@ const UserLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showTestCredentials, setShowTestCredentials] = useState(false);
+  const [autofilledUser, setAutofilledUser] = useState('');
   const navigate = useNavigate();
   const { login } = useAuth();
 
@@ -65,6 +66,12 @@ const UserLogin = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleAutofill = (username, password) => {
+    setUsername(username);
+    setPassword(password);
+    setAutofilledUser(username);
   };
 
   return (
@@ -212,6 +219,44 @@ const UserLogin = () => {
                   </motion.button>
                 ))}
               </motion.div>
+            )}
+          </div>
+        </div>
+
+        <div className="mt-8">
+          <div className="bg-gradient-to-br from-gray-50 via-white to-gray-100 border border-gray-200 rounded-xl p-5 text-sm text-gray-700 shadow-lg transition-all duration-300">
+            <div className="font-semibold mb-3 flex items-center gap-2 text-base text-blue-700">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" strokeWidth="2"/><line x1="12" y1="8" x2="12" y2="12" strokeWidth="2"/><circle cx="12" cy="16" r="1"/></svg>
+              Test Login Credentials <span className="ml-2 text-xs text-blue-400 font-normal">(Tap to autofill)</span>
+            </div>
+            <table className="w-full text-left text-xs mt-2">
+              <thead>
+                <tr className="text-gray-500">
+                  <th className="pr-2 py-1 font-medium">Role</th>
+                  <th className="pr-2 py-1 font-medium">Username</th>
+                  <th className="py-1 font-medium">Password</th>
+                </tr>
+              </thead>
+              <tbody>
+                {testUsers.map((user, idx) => (
+                  <tr
+                    key={user.role}
+                    className={`cursor-pointer transition-all duration-150 hover:bg-blue-50 hover:scale-[1.01] rounded-lg ${autofilledUser === user.username ? 'bg-green-50' : ''}`}
+                    onClick={() => handleAutofill(user.username, user.password)}
+                    title="Click to autofill"
+                  >
+                    <td className="pr-2 py-1 font-semibold text-gray-700">{user.role}</td>
+                    <td className="pr-2 py-1"><code className="bg-gray-200 rounded px-1 text-blue-700">{user.username}</code></td>
+                    <td className="py-1"><code className="bg-gray-200 rounded px-1 text-pink-700">{user.password}</code></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {autofilledUser && (
+              <div className="mt-2 text-xs text-green-600 flex items-center gap-1 animate-fade-in">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                Autofilled <span className="font-semibold">{autofilledUser}</span>!
+              </div>
             )}
           </div>
         </div>

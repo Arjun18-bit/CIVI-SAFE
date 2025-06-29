@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Search, Eye, LogOut, Calendar, MapPin, Shield, Copy, RefreshCw, Clock, AlertTriangle, CheckCircle, Image as ImageIcon, X } from 'lucide-react';
+import { FileText, Search, Eye, LogOut, Calendar, MapPin, Shield, Copy, RefreshCw, Clock, AlertTriangle, Image as ImageIcon, CheckCircle, X, Users, Briefcase, Download } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const AdminDashboard = () => {
@@ -19,6 +19,7 @@ const AdminDashboard = () => {
   const [copiedToken, setCopiedToken] = useState('');
   const [refreshing, setRefreshing] = useState(false);
   const [adminMessage, setAdminMessage] = useState('');
+  const [showNewComplaintNotification, setShowNewComplaintNotification] = useState(false);
   const navigate = useNavigate();
   const { user, logout } = useAuth();
 
@@ -758,6 +759,31 @@ const AdminDashboard = () => {
             </motion.div>
           )}
         </AnimatePresence>
+      </div>
+
+      <div className="mt-8">
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-4 text-sm text-gray-700 shadow-sm">
+          <div className="font-semibold mb-2">Test Login Credentials</div>
+          <table className="w-full text-left text-xs">
+            <thead>
+              <tr>
+                <th className="pr-2">Role</th>
+                <th className="pr-2">Username</th>
+                <th>Password</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Admin</td><td><code>admin</code></td><td><code>admin123</code></td></tr>
+              <tr><td>NGO</td><td><code>ngo1</code></td><td><code>ngo123</code></td></tr>
+              <tr><td>Police</td><td><code>police</code></td><td><code>police123</code></td></tr>
+              <tr><td>User</td><td><code>citizen</code></td><td><code>citizen123</code></td></tr>
+              <tr><td>Student</td><td><code>student</code></td><td><code>student123</code></td></tr>
+              <tr><td>User</td><td><code>john_doe</code></td><td><code>password123</code></td></tr>
+              <tr><td>Student</td><td><code>jane_smith</code></td><td><code>password123</code></td></tr>
+              <tr><td>Faculty</td><td><code>mike_wilson</code></td><td><code>password123</code></td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

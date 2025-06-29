@@ -15,7 +15,8 @@ import {
   Globe,
   Upload,
   X,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Eye
 } from 'lucide-react';
 
 const SubmitComplaint = () => {

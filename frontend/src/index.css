@@ -184,9 +184,9 @@
   }
 
   /* Animation classes */
-  .animate-fade-in {
+  /* .animate-fade-in {
     @apply animate-fade-in;
-  }
+  } */
 
   .animate-slide-in {
     @apply animate-slide-in;

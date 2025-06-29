@@ -12,6 +12,7 @@ import {
   RefreshCw, 
   ArrowLeft, 
   Key,
+  Image as ImageIcon,
   Lock,
   Database,
   Cpu,
@@ -19,7 +20,19 @@ import {
   Smartphone,
   Download,
   MessageCircle,
-  Image as ImageIcon
+  Shield,
+  Users,
+  Calendar,
+  MapPin,
+  Phone,
+  Mail,
+  ArrowRight,
+  Star,
+  Heart,
+  Zap,
+  Sparkles,
+  Globe,
+  Target
 } from 'lucide-react';
 
 const TrackComplaint = () => {
