@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Shield, 
   MessageCircle, 
@@ -10,16 +10,13 @@ import {
   Eye,
   ArrowRight,
   CheckCircle,
-  AlertTriangle,
   TrendingUp,
   Clock,
   Award,
   Zap,
   Heart,
-  Star,
   Sparkles,
   Globe,
-  Target,
   Fingerprint,
   Key,
   Database,
@@ -164,7 +161,6 @@ const StatCard = ({ icon: Icon, value, label, color, delay }) => (
 const Home = () => {
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll();
   
@@ -172,15 +168,6 @@ const Home = () => {
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -300]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  
-  // Mouse tracking for interactive effects
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   useEffect(() => {
     fetchStats();

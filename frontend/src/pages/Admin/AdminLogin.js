@@ -9,7 +9,10 @@ import {
   Shield, 
   ArrowRight,
   AlertCircle,
-  Info
+  Info,
+  Copy,
+  CheckCircle,
+  Crown
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 

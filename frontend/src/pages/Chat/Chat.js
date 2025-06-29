@@ -12,21 +12,17 @@ import {
   Check, 
   CheckCheck, 
   Clock,
+  MoreVertical,
+  Download,
+  User,
+  Bot,
   Eye,
   EyeOff,
   Volume2,
   VolumeX,
-  MoreVertical,
-  Download,
   Trash2,
   Copy,
-  AlertCircle,
-  Shield,
-  Lock,
-  Timer,
-  MessageCircle,
-  User,
-  Bot
+  AlertCircle
 } from 'lucide-react';
 
 // Custom emoji picker data
@@ -122,10 +118,7 @@ const Chat = () => {
   const [newMessage, setNewMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-  const [isRecording, setIsRecording] = useState(false);
-  const [isListening, setIsListening] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
-  const [showFilePicker, setShowFilePicker] = useState(false);
   const [privacyMode, setPrivacyMode] = useState(true);
   const [messageTTL, setMessageTTL] = useState(7); // days
   const [quickReplies, setQuickReplies] = useState([]);
@@ -155,11 +148,9 @@ const Chat = () => {
       recognitionRef.current.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
         setNewMessage(transcript);
-        setIsListening(false);
       };
 
       recognitionRef.current.onerror = () => {
-        setIsListening(false);
       };
     }
   }, []);
@@ -227,21 +218,6 @@ const Chat = () => {
         )
       );
     }, 3000);
-  };
-
-  const handleVoiceInput = () => {
-    if (!recognitionRef.current) {
-      alert('Speech recognition not supported in this browser');
-      return;
-    }
-
-    if (isListening) {
-      recognitionRef.current.stop();
-      setIsListening(false);
-    } else {
-      recognitionRef.current.start();
-      setIsListening(true);
-    }
   };
 
   const addEmoji = (emoji) => {
@@ -619,20 +595,6 @@ const Chat = () => {
                 className="hidden"
                 accept="image/*,.pdf,.doc,.docx,.txt"
               />
-
-              {/* Voice Input */}
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={handleVoiceInput}
-                className={`p-3 rounded-xl transition-colors ${
-                  isListening
-                    ? 'bg-red-500 text-white'
-                    : 'text-gray-500 hover:text-civisafe-600 hover:bg-civisafe-50'
-                }`}
-              >
-                {isListening ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
-              </motion.button>
 
               {/* Text Input */}
               <div className="flex-1">
