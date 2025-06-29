@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Search, Eye, LogOut, Calendar, MapPin, Shield, Copy, RefreshCw, Clock, AlertTriangle, CheckCircle, Image as ImageIcon } from 'lucide-react';
+import { FileText, Search, Eye, LogOut, Calendar, MapPin, Shield, Copy, RefreshCw, Clock, AlertTriangle, CheckCircle, Image as ImageIcon, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const AdminDashboard = () => {

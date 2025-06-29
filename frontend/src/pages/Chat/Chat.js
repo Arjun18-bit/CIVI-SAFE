@@ -22,7 +22,11 @@ import {
   VolumeX,
   Trash2,
   Copy,
-  AlertCircle
+  AlertCircle,
+  MessageCircle,
+  Shield,
+  Timer,
+  Lock
 } from 'lucide-react';
 
 // Custom emoji picker data

@@ -19,7 +19,8 @@ import {
   Mail,
   Copy,
   AlertCircle,
-  Info
+  Info,
+  Shield
 } from 'lucide-react';
 
 // Language options with flags
