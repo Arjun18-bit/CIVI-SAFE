@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiviSafe - Anonymous Complaint System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-indigo-600">🛡️ CiviSafe</h1>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="showSection('home')" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Home</button>
+                    <button onclick="showSection('submit')" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Submit Complaint</button>
+                    <button onclick="showSection('track')" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Track Complaint</button>
+                    <button onclick="showSection('resources')" class="text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">Resources</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <!-- Hero Section -->
+        <div class="gradient-bg text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in">
+                        Privacy-Respecting Anonymous Complaint System
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90">
+                        Submit complaints securely and anonymously. Your identity is protected.
+                    </p>
+                    <div class="space-x-4">
+                        <button onclick="showSection('submit')" class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                            Submit Complaint
+                        </button>
+                        <button onclick="showSection('track')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-300">
+                            Track Complaint
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose CiviSafe?</h2>
+                <p class="text-xl text-gray-600">Secure, anonymous, and user-friendly complaint submission</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white p-8 rounded-lg shadow-md">
+                    <div class="text-4xl mb-4">🔐</div>
+                    <h3 class="text-xl font-semibold mb-4">100% Anonymous</h3>
+                    <p class="text-gray-600">Your identity is never stored or tracked. Submit complaints with complete privacy.</p>
+                </div>
+                
+                <div class="card-hover bg-white p-8 rounded-lg shadow-md">
+                    <div class="text-4xl mb-4">🛡️</div>
+                    <h3 class="text-xl font-semibold mb-4">End-to-End Encryption</h3>
+                    <p class="text-gray-600">Military-grade AES-256 encryption protects your data at every step.</p>
+                </div>
+                
+                <div class="card-hover bg-white p-8 rounded-lg shadow-md">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="text-xl font-semibold mb-4">Easy Tracking</h3>
+                    <p class="text-gray-600">Track your complaint status using secure tokens without revealing your identity.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="bg-gray-100 py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-3xl font-bold text-indigo-600 mb-2">10,000+</div>
+                        <div class="text-gray-600">Complaints Resolved</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-indigo-600 mb-2">99.9%</div>
+                        <div class="text-gray-600">Privacy Guarantee</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-indigo-600 mb-2">24/7</div>
+                        <div class="text-gray-600">Support Available</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-indigo-600 mb-2">50+</div>
+                        <div class="text-gray-600">Partner Organizations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submit Complaint Section -->
+    <section id="submit" class="section hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Submit Anonymous Complaint</h2>
+                <p class="text-xl text-gray-600">Your identity will remain completely anonymous</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <form id="complaintForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                        <select id="category" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                            <option value="">Select a category</option>
+                            <option value="harassment">Harassment</option>
+                            <option value="discrimination">Discrimination</option>
+                            <option value="bullying">Bullying</option>
+                            <option value="academic">Academic Issues</option>
+                            <option value="safety">Safety Concerns</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                        <textarea id="description" rows="6" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Please describe your complaint in detail..." required></textarea>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Location (Optional)</label>
+                        <input type="text" id="location" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Where did this incident occur?">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Date of Incident (Optional)</label>
+                        <input type="date" id="incidentDate" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Upload Evidence (Optional)</label>
+                        <input type="file" id="evidence" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" multiple>
+                        <p class="text-sm text-gray-500 mt-1">Supported formats: PDF, JPG, PNG, DOC (Max 10MB)</p>
+                    </div>
+                    
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-4">
+                        <div class="flex">
+                            <div class="text-yellow-400">⚠️</div>
+                            <div class="ml-3">
+                                <h3 class="text-sm font-medium text-yellow-800">Important Notice</h3>
+                                <p class="text-sm text-yellow-700 mt-1">
+                                    This system is for legitimate complaints only. False reports may be subject to legal action.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-indigo-700 transition duration-300">
+                        Submit Complaint
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Complaint Section -->
+    <section id="track" class="section hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Track Your Complaint</h2>
+                <p class="text-xl text-gray-600">Enter your tracking token to check the status</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <form id="trackForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tracking Token</label>
+                        <input type="text" id="trackingToken" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter your tracking token" required>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-indigo-700 transition duration-300">
+                        Track Complaint
+                    </button>
+                </form>
+                
+                <div id="trackingResult" class="mt-8 hidden">
+                    <!-- Results will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="section hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Resources & Support</h2>
+                <p class="text-xl text-gray-600">Educational materials and emergency contacts</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-semibold mb-6">📚 Educational Resources</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-indigo-500 pl-4">
+                            <h4 class="font-semibold">Know Your Rights</h4>
+                            <p class="text-gray-600">Understanding your legal rights and protections</p>
+                        </div>
+                        <div class="border-l-4 border-indigo-500 pl-4">
+                            <h4 class="font-semibold">Anti-Bullying Guidelines</h4>
+                            <p class="text-gray-600">How to identify and report bullying incidents</p>
+                        </div>
+                        <div class="border-l-4 border-indigo-500 pl-4">
+                            <h4 class="font-semibold">Harassment Prevention</h4>
+                            <p class="text-gray-600">Recognizing and preventing harassment</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-semibold mb-6">🆘 Emergency Contacts</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h4 class="font-semibold">Police Emergency</h4>
+                            <p class="text-gray-600">100 - Immediate police assistance</p>
+                        </div>
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h4 class="font-semibold">Women Helpline</h4>
+                            <p class="text-gray-600">1091 - 24/7 women's safety helpline</p>
+                        </div>
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h4 class="font-semibold">Child Helpline</h4>
+                            <p class="text-gray-600">1098 - Child protection services</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">🛡️ CiviSafe</h3>
+                <p class="text-gray-400 mb-4">Privacy-Respecting Anonymous Complaint & Support System</p>
+                <p class="text-sm text-gray-500">© 2024 CiviSafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            selectedSection.classList.remove('hidden');
+            selectedSection.classList.add('active');
+        }
+
+        // Complaint Form Submission
+        document.getElementById('complaintForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                category: document.getElementById('category').value,
+                description: document.getElementById('description').value,
+                location: document.getElementById('location').value,
+                incidentDate: document.getElementById('incidentDate').value,
+                evidence: document.getElementById('evidence').files
+            };
+            
+            // Generate a mock tracking token
+            const trackingToken = 'CIVI-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            
+            // Show success message with tracking token
+            alert(`Complaint submitted successfully!\n\nYour tracking token is: ${trackingToken}\n\nPlease save this token to track your complaint status.`);
+            
+            // Reset form
+            document.getElementById('complaintForm').reset();
+        });
+
+        // Tracking Form Submission
+        document.getElementById('trackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const trackingToken = document.getElementById('trackingToken').value;
+            const resultDiv = document.getElementById('trackingResult');
+            
+            // Mock tracking result
+            const mockStatuses = [
+                { status: 'Under Review', color: 'yellow', description: 'Your complaint is being reviewed by our team.' },
+                { status: 'In Progress', color: 'blue', description: 'We are actively working on your complaint.' },
+                { status: 'Resolved', color: 'green', description: 'Your complaint has been successfully resolved.' },
+                { status: 'Pending Information', color: 'orange', description: 'We need additional information to proceed.' }
+            ];
+            
+            const randomStatus = mockStatuses[Math.floor(Math.random() * mockStatuses.length)];
+            
+            resultDiv.innerHTML = `
+                <div class="bg-${randomStatus.color}-50 border border-${randomStatus.color}-200 rounded-md p-6">
+                    <div class="flex items-center">
+                        <div class="text-${randomStatus.color}-400 text-2xl mr-3">
+                            ${randomStatus.status === 'Resolved' ? '✅' : '📋'}
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-${randomStatus.color}-800">Status: ${randomStatus.status}</h3>
+                            <p class="text-${randomStatus.color}-700 mt-1">${randomStatus.description}</p>
+                            <p class="text-sm text-gray-500 mt-2">Tracking Token: ${trackingToken}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            resultDiv.classList.remove('hidden');
+        });
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show home section by default
+            showSection('home');
+        });
+    </script>
+</body>
+</html> 

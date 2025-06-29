@@ -1,0 +1,23 @@
+{
+  "name": "civisafe",
+  "version": "1.0.0",
+  "description": "CiviSafe - Privacy-Respecting Anonymous Complaint & Support System",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm start",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "complaint-system",
+    "privacy",
+    "encryption",
+    "anonymous-reporting"
+  ],
+  "author": "CiviSafe Team",
+  "license": "MIT"
+} 
