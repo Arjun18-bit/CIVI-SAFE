@@ -40,3 +40,89 @@
 
 ## 🧱 Project Structure
 
+```
+
+CIVI-SAFE/
+├── frontend/         # React client
+│   ├── pages/        # Page components (Home, Submit, Track, Chat, Admin)
+│   ├── components/   # Reusable UI components
+│   ├── services/     # Axios API handlers
+│   └── context/      # Auth and chat context
+│
+├── backend/          # Node.js server
+│   ├── routes/       # API routes (auth, complaints, chat, admin, files)
+│   ├── controllers/  # Request handlers
+│   ├── models/       # Sequelize models
+│   ├── middleware/   # JWT, error handling
+│   ├── utils/        # Encryption, token, logger
+│   └── server.js
+│
+├── database/
+│   └── schema.sql    # PostgreSQL schema
+│
+├── docs/
+│   ├── ER-diagram.png
+│   ├── architecture.png
+│   └── IEEE-paper-draft.docx
+└── README.md
+
+````
+
+---
+
+## 🚀 Setup Instructions
+
+### 🔧 Prerequisites
+- Node.js & npm
+- PostgreSQL
+
+### 📦 Backend Setup
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Edit .env with DB credentials and JWT secret
+npm run dev
+````
+
+### 💻 Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+### 🗄️ Database Setup
+
+```bash
+# Create database manually first (e.g., 'civisafe')
+psql -U postgres -d civisafe -f database/schema.sql
+```
+
+---
+
+## 🔒 Security Features
+
+| Area          | Protection Used                      |
+| ------------- | ------------------------------------ |
+| Identity      | Anonymous token-based system         |
+| Storage       | AES-encrypted complaint text & files |
+| Sessions      | JWT-based authentication             |
+| Abuse Control | Flagging + moderation + audit logs   |
+| Data Expiry   | Auto-deletion of chat/files (TTL)    |
+
+---
+
+## 🧠 Future Enhancements
+
+* 📱 Mobile App (React Native)
+* 🌐 Multi-language UI support
+* 🧾 Decentralized storage or blockchain integration
+* 🤖 AI-based spam detection (toggleable)
+* 🧑‍⚖️ Legal escalation with chain of custody
+
+
+---
+
+**Let’s build a society where every voice can be safely heard.**
